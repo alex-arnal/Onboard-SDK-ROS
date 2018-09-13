@@ -208,6 +208,12 @@ DJISDKNode::dataBroadcastCallback()
     gimbal_angle_vec3.vector.y     = gimbal_angle.pitch;
     gimbal_angle_vec3.vector.z     = gimbal_angle.yaw;
     gimbal_angle_publisher.publish(gimbal_angle_vec3);
+    double to_rads = M_PI/180;
+    gimbal_angle_vec3.vector.x     = gimbal_angle.roll * to_rads;
+    gimbal_angle_vec3.vector.y     = gimbal_angle.pitch * to_rads;
+    gimbal_angle_vec3.vector.z     = gimbal_angle.yaw * to_rads;
+    gimbal_rad_angle_publisher.publish(gimbal_angle_vec3);
+
   }
 }
 
@@ -401,6 +407,12 @@ DJISDKNode::publish50HzData(Vehicle* vehicle, RecvContainer recvFrame,
   gimbal_angle_vec3.vector.y     = gimbal_angle.y;
   gimbal_angle_vec3.vector.z     = gimbal_angle.z;
   p->gimbal_angle_publisher.publish(gimbal_angle_vec3);
+  double to_rads = M_PI/180;
+  gimbal_angle_vec3.vector.x     = gimbal_angle.x * to_rads;
+  gimbal_angle_vec3.vector.y     = gimbal_angle.y * to_rads;
+  gimbal_angle_vec3.vector.z     = gimbal_angle.z * to_rads;
+  p->gimbal_rad_angle_publisher.publish(gimbal_angle_vec3);
+
 
   // See dji_sdk.h for details about display_mode
 

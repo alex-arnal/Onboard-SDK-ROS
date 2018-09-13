@@ -288,6 +288,9 @@ DJISDKNode::initPublisher(ros::NodeHandle& nh)
 
   // TODO: documentation and proper frame id
   gimbal_angle_publisher =
+    nh.advertise<geometry_msgs::Vector3Stamped>("dji_sdk/gimbal_angle_deg", 10);
+
+  gimbal_rad_angle_publisher =
     nh.advertise<geometry_msgs::Vector3Stamped>("dji_sdk/gimbal_angle", 10);
 
   local_position_publisher =

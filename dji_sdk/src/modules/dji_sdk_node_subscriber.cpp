@@ -31,7 +31,7 @@ void
 DJISDKNode::gimbalSpeedCtrlCallback(
   const geometry_msgs::Vector3Stamped::ConstPtr& msg)
 {
-  ROS_DEBUG("called gimbalAngleCtrlCallback");
+  ROS_DEBUG("called gimbalSpeedCtrlCallback");
 
   DJI::OSDK::Gimbal::SpeedData speed_data;
   //! OSDK takes 0.1 deg as unit
